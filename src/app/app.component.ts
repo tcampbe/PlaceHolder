@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PlaceHolderService } from './services/place-holder.service';
 import { Config } from './models/config';
 
@@ -8,17 +8,17 @@ import { Config } from './models/config';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'PlaceHolder';
-  public dataValues: object;
-  public config: Config;
+  dataSource;
+  displayedColumns: string[] = ['userId', 'id', 'title', 'completed'];
 
   constructor(
     public placeHolderService: PlaceHolderService,
   ) { };
 
-  showConfig() {
-    this.placeHolderService.getConfig()
-      .subscribe((data: Config) => this.dataValues = data);
+  async ngOnInit(): Promise<void> {
+    this.dataSource = await this.placeHolderService.get()
   }
+
 }
