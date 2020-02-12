@@ -9,7 +9,7 @@ export class PlaceHolderService {
 
   configUrl = "https://jsonplaceholder.typicode.com/todos";
 
-  getConfig() {
-    return this.http.get(this.configUrl);
+  async getConfig(): Promise<any> {
+    return await this.http.get(this.configUrl).toPromise;
   }
 }
