@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PlaceHolderService } from './services/place-holder.service';
-import { Config } from './models/config';
 
 @Component({
   selector: 'app-root',
