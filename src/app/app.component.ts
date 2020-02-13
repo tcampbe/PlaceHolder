@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PlaceHolderService } from './services/place-holder.service';
+import { MatPaginator } from '@angular/material/paginator/typings/public-api';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,11 @@ import { PlaceHolderService } from './services/place-holder.service';
 })
 
 export class AppComponent implements OnInit {
+
   title = 'PlaceHolder';
   dataSource;
   displayedColumns: string[] = ['userId', 'id', 'title', 'completed'];
+
 
   constructor(
     public placeHolderService: PlaceHolderService,
@@ -20,4 +23,11 @@ export class AppComponent implements OnInit {
     this.dataSource = await this.placeHolderService.get()
   }
 
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLocaleLowerCase();
+  }
+
+  onRowClicked(row) {
+    console.log('Row clicked: ', row);
+  }
 }

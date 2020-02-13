@@ -6,6 +6,12 @@ import { AppComponent } from "./app.component";
 import { PlaceHolderService } from "./services/place-holder.service";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatTableModule } from "@angular/material/table";
+import {
+  MatInputModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
+  MatSortModule
+} from "@angular/material";
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,10 +19,13 @@ import { MatTableModule } from "@angular/material/table";
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
+    MatSortModule
   ],
   providers: [PlaceHolderService],
   bootstrap: [AppComponent]
 })
-
 export class AppModule {}
